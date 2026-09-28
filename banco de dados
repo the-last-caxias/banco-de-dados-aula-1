@@ -1,0 +1,25 @@
+<?php
+$con = mysqli_connect("localhost","root","123456");
+if (!$con){
+    die("ERRO:".mysqli_error($con));
+}
+echo "conexao estabelecida com sucesso.";
+if(!mysqli_select_db($con,"agenda")){
+    die("ERRO:".mysqli_error($con));
+}
+echo "<br/>banco selecionado com sucesso.";
+
+$rua="rua dos flores";
+$cidade="natal";
+$cep="59000-000";
+
+$comando="Insert into endereco (rua,cidade,cep) values ('$rua','$cidade','$cep')";
+
+$res= mysqli_query($con,$comando);
+if($res){
+    echo "<br/>registro inserido com sucesso.";
+}else{
+    echo "<br/>ERRO:".mysqli_error($con);
+}
+
+?>
